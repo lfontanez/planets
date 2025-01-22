@@ -1,16 +1,29 @@
 # 3D Solar System Visualization
 
-A web-based 3D visualization of our solar system built with Three.js. This project was developed as a test case using Aider with Claude-3.5-Sonnet AI assistant.
+A web-based 3D visualization of our solar system built with Three.js. This project was developed as a test case using Aider with Claude-3.5-Sonnet AI assistant. It features an interactive model of the solar system with planets, major moons, and various visualization controls.
 
 ## Features
 
 - Interactive 3D visualization of the solar system
-- Realistic relative orbital periods (scaled)
-- Planet size scaling controls
-- Simulation speed controls
-- Toggleable orbital paths
-- Planet labels
-- Full camera controls (rotate, pan, zoom)
+- All 8 planets with realistic relative:
+  - Orbital periods (scaled)
+  - Distances (logarithmically scaled)
+  - Sizes (adjustable)
+- Major moons including:
+  - Earth's Moon (Luna)
+  - Jupiter's largest moons (Ganymede, Callisto, Io, Europa)
+  - Saturn's largest moon (Titan)
+- Dynamic controls for:
+  - Simulation speed
+  - Planet sizes
+  - Sun size (simulate red giant phase)
+  - Moon visibility
+  - Orbit path visibility
+  - Planet/Moon labels
+- Full camera controls:
+  - Rotate view (left click + drag)
+  - Pan view (right click + drag)
+  - Zoom (scroll wheel)
 
 ## Technologies Used
 
@@ -24,13 +37,18 @@ Simply open `index.html` in a modern web browser. The visualization will start a
 
 ### Controls
 
-- Left click + drag to rotate the view
-- Right click + drag to pan
-- Scroll wheel to zoom in/out
-- Use the control panel to adjust:
-  - Simulation speed
-  - Planet sizes
-  - Orbit visibility
+#### Camera Controls
+- Left click + drag: Rotate the view
+- Right click + drag: Pan the view
+- Scroll wheel: Zoom in/out
+
+#### Simulation Controls
+- Simulation Speed: Adjust the orbital motion speed
+- Show Orbits: Toggle visibility of orbital paths
+- Planet Scale: Adjust the size of all planets and moons
+- Sun Scale: Adjust the sun's size (simulating different stellar phases)
+- Show Labels: Toggle visibility of planet and moon names
+- Show Moons: Toggle visibility of all moons
 
 ## Development
 
