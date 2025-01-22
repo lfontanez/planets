@@ -70,8 +70,8 @@ function init() {
     window.addEventListener('resize', onWindowResize, false);
     
     // Set up controls container
+    const controlsOverlay = document.getElementById('controls-overlay');
     const controls = document.getElementById('controls');
-    controls.style.pointerEvents = 'auto';
     
     // Add event listeners with pointer-events handling
     const speedSlider = document.getElementById('speedSlider');
