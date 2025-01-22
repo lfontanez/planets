@@ -170,6 +170,7 @@ function createPlanet(data) {
     labelDiv.textContent = data.name;
     const label = new THREE.CSS2DObject(labelDiv);
     label.position.set(0, data.size * planetScale / 40, 0);
+    label.visible = false;  // Hide labels by default
     planet.add(label);
     labels.push(label);
     
@@ -220,6 +221,7 @@ function createMoon(data) {
     labelDiv.textContent = data.name;
     const label = new THREE.CSS2DObject(labelDiv);
     label.position.set(0, data.size * planetScale / 40, 0);
+    label.visible = false;  // Hide labels by default
     moon.add(label);
     labels.push(label);
     
