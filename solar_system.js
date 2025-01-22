@@ -40,7 +40,7 @@ function init() {
     camera.lookAt(0, 0, 0);
 
     // Controls
-    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    const controls = new THREE.OrbitControls(camera, labelRenderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
 
