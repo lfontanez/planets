@@ -1,18 +1,18 @@
 // Planet data with real relative orbital periods (scaled)
 const PLANET_DATA = [
-    { name: 'Mercury', distance: 57.9, period: 0.24, size: 0.383, color: 0xC0C0C0 },
-    { name: 'Venus', distance: 108.2, period: 0.615, size: 0.949, color: 0xFAD6A5 },
-    { name: 'Earth', distance: 149.6, period: 1, size: 1, color: 0x6B93D6 },
-    { name: 'Mars', distance: 227.9, period: 1.88, size: 0.532, color: 0xE27B58 },
-    { name: 'Jupiter', distance: 778.5, period: 11.86, size: 11.209, color: 0xC88B3A },
-    { name: 'Saturn', distance: 1434.0, period: 29.46, size: 9.449, color: 0xEAD6B8 },
-    { name: 'Uranus', distance: 2871.0, period: 84.01, size: 4.007, color: 0xABCCE8 },
-    { name: 'Neptune', distance: 4495.0, period: 164.79, size: 3.883, color: 0x5B5DDF }
+    { name: 'Mercury', distance: 1, period: 0.24, size: 3, color: 0xC0C0C0 },
+    { name: 'Venus', distance: 2, period: 0.615, size: 4, color: 0xFAD6A5 },
+    { name: 'Earth', distance: 3, period: 1, size: 4, color: 0x6B93D6 },
+    { name: 'Mars', distance: 4, period: 1.88, size: 3, color: 0xE27B58 },
+    { name: 'Jupiter', distance: 6, period: 11.86, size: 8, color: 0xC88B3A },
+    { name: 'Saturn', distance: 8, period: 29.46, size: 7, color: 0xEAD6B8 },
+    { name: 'Uranus', distance: 10, period: 84.01, size: 5, color: 0xABCCE8 },
+    { name: 'Neptune', distance: 12, period: 164.79, size: 5, color: 0x5B5DDF }
 ];
 
 let scene, camera, renderer, planets = [], orbits = [];
 let simSpeed = 1, planetScale = 50;
-const DISTANCE_SCALE = 200;
+const DISTANCE_SCALE = 80;
 
 function getLogDistance(distance) {
     // Use natural log to compress the distances
@@ -28,8 +28,8 @@ function init() {
     document.body.appendChild(renderer.domElement);
 
     // Camera position
-    camera.position.z = 1000;
-    camera.position.y = 500;
+    camera.position.z = 400;
+    camera.position.y = 200;
     camera.lookAt(0, 0, 0);
 
     // Controls
@@ -44,7 +44,7 @@ function init() {
     scene.add(pointLight);
 
     // Sun
-    const sunGeometry = new THREE.SphereGeometry(20, 32, 32);
+    const sunGeometry = new THREE.SphereGeometry(10, 32, 32);
     const sunMaterial = new THREE.MeshBasicMaterial({ 
         color: 0xFFFF00,
         emissive: 0xFFFF00,
