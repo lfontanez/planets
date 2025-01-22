@@ -94,7 +94,7 @@ function init() {
     speedSlider.addEventListener('input', (e) => {
         e.stopPropagation();
         e.preventDefault();
-        simSpeed = e.target.value;
+        simSpeed = e.target.value / 10;
     });
     speedSlider.addEventListener('mousedown', (e) => {
         e.stopPropagation();
