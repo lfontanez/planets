@@ -69,21 +69,43 @@ function init() {
     // Event listeners
     window.addEventListener('resize', onWindowResize, false);
     
-    // Move controls to labelRenderer's DOM element
+    // Set up controls container
     const controls = document.getElementById('controls');
-    labelRenderer.domElement.appendChild(controls);
+    controls.style.pointerEvents = 'auto';
     
-    document.getElementById('speedSlider').addEventListener('input', (e) => {
-        e.stopPropagation();  // Prevent OrbitControls from catching the event
+    // Add event listeners with pointer-events handling
+    const speedSlider = document.getElementById('speedSlider');
+    speedSlider.addEventListener('input', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
         simSpeed = e.target.value / 100;
     });
-    document.getElementById('scaleSlider').addEventListener('input', (e) => {
-        e.stopPropagation();  // Prevent OrbitControls from catching the event
+    speedSlider.addEventListener('mousedown', (e) => {
+        e.stopPropagation();
+        orbitControls.enabled = false;
+    });
+    speedSlider.addEventListener('mouseup', () => {
+        orbitControls.enabled = true;
+    });
+
+    const scaleSlider = document.getElementById('scaleSlider');
+    scaleSlider.addEventListener('input', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
         planetScale = e.target.value;
         updatePlanetScales();
     });
-    document.getElementById('showOrbits').addEventListener('change', (e) => {
-        e.stopPropagation();  // Prevent OrbitControls from catching the event
+    scaleSlider.addEventListener('mousedown', (e) => {
+        e.stopPropagation();
+        orbitControls.enabled = false;
+    });
+    scaleSlider.addEventListener('mouseup', () => {
+        orbitControls.enabled = true;
+    });
+
+    const showOrbitsCheckbox = document.getElementById('showOrbits');
+    showOrbitsCheckbox.addEventListener('change', (e) => {
+        e.stopPropagation();
         orbits.forEach(orbit => {
             orbit.visible = e.target.checked;
         });

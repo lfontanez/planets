@@ -23,6 +23,16 @@
             font-family: Arial;
             background: rgba(0,0,0,0.7);
             padding: 10px;
+            pointer-events: auto;
+            z-index: 1000;
+        }
+        .control-group {
+            margin: 5px 0;
+            pointer-events: auto;
+        }
+        input[type="range"] {
+            pointer-events: auto;
+            width: 100%;
         }
         .label {
             color: #FFF;
@@ -42,12 +52,18 @@
         Scroll to zoom
     </div>
     <div id="controls">
-        <label>Simulation Speed: </label>
-        <input type="range" id="speedSlider" min="0" max="200" value="100"><br>
-        <label>Show Orbits: </label>
-        <input type="checkbox" id="showOrbits" checked><br>
-        <label>Planet Scale: </label>
-        <input type="range" id="scaleSlider" min="1" max="500" value="50">
+        <div class="control-group">
+            <label>Simulation Speed: </label>
+            <input type="range" id="speedSlider" min="0" max="200" value="100"><br>
+        </div>
+        <div class="control-group">
+            <label>Show Orbits: </label>
+            <input type="checkbox" id="showOrbits" checked><br>
+        </div>
+        <div class="control-group">
+            <label>Planet Scale: </label>
+            <input type="range" id="scaleSlider" min="1" max="500" value="50">
+        </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
