@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Solar System 3D</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+        #info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            font-family: Arial;
+            font-size: 14px;
+            background: rgba(0,0,0,0.7);
+            padding: 10px;
+        }
+        #controls {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            font-family: Arial;
+            background: rgba(0,0,0,0.7);
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="info">
+        Solar System Simulation<br>
+        Left click + drag to rotate<br>
+        Right click + drag to pan<br>
+        Scroll to zoom
+    </div>
+    <div id="controls">
+        <label>Simulation Speed: </label>
+        <input type="range" id="speedSlider" min="0" max="200" value="100"><br>
+        <label>Show Orbits: </label>
+        <input type="checkbox" id="showOrbits" checked><br>
+        <label>Planet Scale: </label>
+        <input type="range" id="scaleSlider" min="1" max="500" value="50">
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"></script>
+    <script src="solar_system.js"></script>
+</body>
+</html>
