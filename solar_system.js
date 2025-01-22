@@ -1,5 +1,6 @@
 // Moon data with relative orbital periods (scaled)
 const MOON_DATA = [
+    { name: 'Luna', parentPlanet: 'Earth', distance: 0.7, period: 0.074, size: 1.2, color: 0xDDDDDD },
     { name: 'Ganymede', parentPlanet: 'Jupiter', distance: 0.8, period: 0.008, size: 1.5, color: 0x888888 },
     { name: 'Titan', parentPlanet: 'Saturn', distance: 0.9, period: 0.016, size: 1.4, color: 0xFFA500 },
     { name: 'Callisto', parentPlanet: 'Jupiter', distance: 1.2, period: 0.017, size: 1.4, color: 0x666666 },
