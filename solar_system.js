@@ -141,6 +141,22 @@ function init() {
     sunScaleSlider.addEventListener('mouseup', () => {
         orbitControls.enabled = true;
     });
+
+    const showLabelsCheckbox = document.getElementById('showLabels');
+    showLabelsCheckbox.addEventListener('change', (e) => {
+        e.stopPropagation();
+        labels.forEach(label => {
+            label.visible = e.target.checked;
+        });
+    });
+
+    const showMoonsCheckbox = document.getElementById('showMoons');
+    showMoonsCheckbox.addEventListener('change', (e) => {
+        e.stopPropagation();
+        moons.forEach(moon => {
+            moon.visible = e.target.checked;
+        });
+    });
 }
 
 function createPlanet(data) {
