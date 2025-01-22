@@ -10,7 +10,7 @@ const PLANET_DATA = [
     { name: 'Neptune', distance: 12, period: 164.79, size: 5, color: 0x5B5DDF }
 ];
 
-let scene, camera, renderer, planets = [], orbits = [];
+let scene, camera, renderer, labelRenderer, planets = [], orbits = [], labels = [];
 let simSpeed = 1, planetScale = 50;
 const DISTANCE_SCALE = 80;
 
@@ -26,6 +26,13 @@ function init() {
     renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
+
+    // Label renderer
+    labelRenderer = new THREE.CSS2DRenderer();
+    labelRenderer.setSize(window.innerWidth, window.innerHeight);
+    labelRenderer.domElement.style.position = 'absolute';
+    labelRenderer.domElement.style.top = '0px';
+    document.body.appendChild(labelRenderer.domElement);
 
     // Camera position
     camera.position.z = 400;
@@ -80,6 +87,15 @@ function createPlanet(data) {
     const material = new THREE.MeshPhongMaterial({ color: data.color });
     const planet = new THREE.Mesh(geometry, material);
     
+    // Create label
+    const labelDiv = document.createElement('div');
+    labelDiv.className = 'label';
+    labelDiv.textContent = data.name;
+    const label = new THREE.CSS2DObject(labelDiv);
+    label.position.set(0, data.size * planetScale / 40, 0);
+    planet.add(label);
+    labels.push(label);
+    
     planet.userData = {
         distance: getLogDistance(data.distance),
         period: data.period,
@@ -124,12 +140,14 @@ function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
+    labelRenderer.setSize(window.innerWidth, window.innerHeight);
 }
 
 function animate() {
     requestAnimationFrame(animate);
     updatePlanetPositions();
     renderer.render(scene, camera);
+    labelRenderer.render(scene, camera);
 }
 
 init();
