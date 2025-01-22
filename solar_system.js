@@ -68,14 +68,22 @@ function init() {
 
     // Event listeners
     window.addEventListener('resize', onWindowResize, false);
+    
+    // Move controls to labelRenderer's DOM element
+    const controls = document.getElementById('controls');
+    labelRenderer.domElement.appendChild(controls);
+    
     document.getElementById('speedSlider').addEventListener('input', (e) => {
+        e.stopPropagation();  // Prevent OrbitControls from catching the event
         simSpeed = e.target.value / 100;
     });
     document.getElementById('scaleSlider').addEventListener('input', (e) => {
+        e.stopPropagation();  // Prevent OrbitControls from catching the event
         planetScale = e.target.value;
         updatePlanetScales();
     });
     document.getElementById('showOrbits').addEventListener('change', (e) => {
+        e.stopPropagation();  // Prevent OrbitControls from catching the event
         orbits.forEach(orbit => {
             orbit.visible = e.target.checked;
         });
