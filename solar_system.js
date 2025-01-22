@@ -21,8 +21,8 @@ const PLANET_DATA = [
 ];
 
 let scene, camera, renderer, labelRenderer, planets = [], moons = [], orbits = [], labels = [];
-let simSpeed = 1, planetScale = 50, sunScale = 100;
-const DISTANCE_SCALE = 80;
+let simSpeed = .2, planetScale = 1, sunScale = 300;
+const DISTANCE_SCALE = 100;
 
 function getLogDistance(distance) {
     // Use natural log to compress the distances
@@ -94,7 +94,7 @@ function init() {
     speedSlider.addEventListener('input', (e) => {
         e.stopPropagation();
         e.preventDefault();
-        simSpeed = e.target.value / 100;
+        simSpeed = e.target.value;
     });
     speedSlider.addEventListener('mousedown', (e) => {
         e.stopPropagation();
@@ -108,7 +108,7 @@ function init() {
     scaleSlider.addEventListener('input', (e) => {
         e.stopPropagation();
         e.preventDefault();
-        planetScale = e.target.value;
+        planetScale = e.target.value / 100;
         updatePlanetScales();
     });
     scaleSlider.addEventListener('mousedown', (e) => {
@@ -144,7 +144,7 @@ function init() {
 }
 
 function createPlanet(data) {
-    const geometry = new THREE.SphereGeometry(data.size * planetScale / 50, 32, 32);
+    const geometry = new THREE.SphereGeometry(data.size * planetScale, 32, 32);
     const material = new THREE.MeshPhongMaterial({ color: data.color });
     const planet = new THREE.Mesh(geometry, material);
     
@@ -183,18 +183,18 @@ function createOrbit(radius) {
 
 function updatePlanetScales() {
     planets.forEach((planet, index) => {
-        const scale = PLANET_DATA[index].size * planetScale / 50;
+        const scale = PLANET_DATA[index].size * planetScale;
         planet.scale.set(scale, scale, scale);
     });
     
     moons.forEach((moon, index) => {
-        const scale = MOON_DATA[index].size * planetScale / 50;
+        const scale = MOON_DATA[index].size * planetScale;
         moon.scale.set(scale, scale, scale);
     });
 }
 
 function createMoon(data) {
-    const geometry = new THREE.SphereGeometry(data.size * planetScale / 50, 32, 32);
+    const geometry = new THREE.SphereGeometry(data.size * planetScale, 32, 32);
     const material = new THREE.MeshPhongMaterial({ color: data.color });
     const moon = new THREE.Mesh(geometry, material);
     
