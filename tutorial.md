@@ -46,21 +46,12 @@ The AI renamed the OrbitControls instance to avoid naming conflict with the cont
 
 ## Project Configuration
 
-### 1. Git Profile Setup
-**User:** "how can i set my git profile"
-
-The AI provided instructions for setting git configuration:
-```bash
-git config --global user.name "Your Name"
-git config --global user.email "your.email@example.com"
-```
-
-### 2. Adding .gitignore
+### 1. Adding .gitignore
 The AI created a comprehensive .gitignore file with common patterns for web development.
 
 **Commit:** `67dafdc` - "chore: Update .gitignore with comprehensive ignore patterns"
 
-### 3. Adding Documentation
+### 2. Adding Documentation
 The AI created a README.md with:
 - Project description
 - Features list
