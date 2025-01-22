@@ -12,7 +12,12 @@ const PLANET_DATA = [
 
 let scene, camera, renderer, planets = [], orbits = [];
 let simSpeed = 1, planetScale = 50;
-const DISTANCE_SCALE = 100;
+const DISTANCE_SCALE = 200;
+
+function getLogDistance(distance) {
+    // Use natural log to compress the distances
+    return Math.log(distance + 1) * DISTANCE_SCALE;
+}
 
 function init() {
     // Scene setup
@@ -51,7 +56,7 @@ function init() {
     // Add planets
     PLANET_DATA.forEach(data => {
         createPlanet(data);
-        createOrbit(data.distance * DISTANCE_SCALE / 10);
+        createOrbit(getLogDistance(data.distance));
     });
 
     // Event listeners
@@ -76,7 +81,7 @@ function createPlanet(data) {
     const planet = new THREE.Mesh(geometry, material);
     
     planet.userData = {
-        distance: data.distance * DISTANCE_SCALE / 10,
+        distance: getLogDistance(data.distance),
         period: data.period,
         angle: Math.random() * Math.PI * 2
     };
