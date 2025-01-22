@@ -23,8 +23,8 @@ function init() {
     document.body.appendChild(renderer.domElement);
 
     // Camera position
-    camera.position.z = 500;
-    camera.position.y = 200;
+    camera.position.z = 1000;
+    camera.position.y = 500;
     camera.lookAt(0, 0, 0);
 
     // Controls
@@ -39,8 +39,12 @@ function init() {
     scene.add(pointLight);
 
     // Sun
-    const sunGeometry = new THREE.SphereGeometry(10, 32, 32);
-    const sunMaterial = new THREE.MeshBasicMaterial({ color: 0xFFFF00 });
+    const sunGeometry = new THREE.SphereGeometry(20, 32, 32);
+    const sunMaterial = new THREE.MeshBasicMaterial({ 
+        color: 0xFFFF00,
+        emissive: 0xFFFF00,
+        emissiveIntensity: 1
+    });
     const sun = new THREE.Mesh(sunGeometry, sunMaterial);
     scene.add(sun);
 
