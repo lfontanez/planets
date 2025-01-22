@@ -11,7 +11,7 @@ const PLANET_DATA = [
 ];
 
 let scene, camera, renderer, labelRenderer, planets = [], orbits = [], labels = [];
-let simSpeed = 1, planetScale = 50;
+let simSpeed = 1, planetScale = 50, sunScale = 100;
 const DISTANCE_SCALE = 80;
 
 function getLogDistance(distance) {
@@ -51,13 +51,14 @@ function init() {
     scene.add(pointLight);
 
     // Sun
-    const sunGeometry = new THREE.SphereGeometry(10, 32, 32);
+    const sunGeometry = new THREE.SphereGeometry(1, 32, 32);
     const sunMaterial = new THREE.MeshBasicMaterial({ 
         color: 0xFFFF00,
         emissive: 0xFFFF00,
         emissiveIntensity: 1
     });
     const sun = new THREE.Mesh(sunGeometry, sunMaterial);
+    sun.scale.set(sunScale/10, sunScale/10, sunScale/10);
     scene.add(sun);
 
     // Add planets
@@ -109,6 +110,21 @@ function init() {
         orbits.forEach(orbit => {
             orbit.visible = e.target.checked;
         });
+    });
+
+    const sunScaleSlider = document.getElementById('sunScaleSlider');
+    sunScaleSlider.addEventListener('input', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        sunScale = e.target.value;
+        sun.scale.set(sunScale/10, sunScale/10, sunScale/10);
+    });
+    sunScaleSlider.addEventListener('mousedown', (e) => {
+        e.stopPropagation();
+        orbitControls.enabled = false;
+    });
+    sunScaleSlider.addEventListener('mouseup', () => {
+        orbitControls.enabled = true;
     });
 }
 
